@@ -1,0 +1,6 @@
+Example URLs:
+GET ALL - /api/api.php
+GET ONE - /api/api.php?operation=get&id={id}
+CREATE - /api/api.php?operation=create&name={name}&state={state}
+UPDATE - /api/api.php?operation=update&id={id}&name={name}&state={state}
+DELETE - /api/api.php?operation=delete&id={id}
