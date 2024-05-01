@@ -2,6 +2,7 @@
 <html lang="en">
 
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +10,7 @@
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-    <title>Controller</title>
+    <title>MM Controller</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -18,7 +19,6 @@
 </head>
 
 <body>
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-11 mx-auto mt-3 rounded">
@@ -52,27 +52,9 @@
                                             </div>
                                         </form>
                                     </div>
-
-                                    <!-- <div class="form-group">
-
-                                        <label for="exampleInputFile">
-                                            File input
-                                        </label>
-                                        <input type="file" class="form-control-file" id="exampleInputFile">
-                                        <p class="help-block">
-                                            Example block-level help text here.
-                                        </p>
-                                    </div>
-                                    <div class="checkbox">
-
-                                        <label>
-                                            <input type="checkbox"> Check me out
-                                        </label>
-                                    </div> -->
                                 </form>
                             </div>
                             <div class="modal-footer">
-
                                 <button type="submit" class="btn btn-primary" style="background-color: #76ABAE;"
                                     onclick="addEntry()">
                                     Save changes
@@ -125,13 +107,15 @@
                                     <td><?php echo $row['last_modified']; ?></td>
                                     <td>
                                         <button type="button" class="btn <?php echo $button_color; ?>"
-                                            onclick="changeState(<?php echo $row['id']; ?>, '<?php echo $row['name']; ?>', <?php echo $row['state']; ?>)" style="float: center;">
+                                            onclick="changeState(<?php echo $row['id']; ?>, '<?php echo $row['name']; ?>', <?php echo $row['state']; ?>)"
+                                            style="float: center;">
                                             <?php echo ($row['state'] == 0) ? 'Turn On' : 'Turn Off'; ?>
                                         </button>
                                     </td>
                                     <td>
                                         <button type="button" class="btn <?php echo 'btn-success'; ?>"
-                                            onclick="editEntry(<?php echo $row['id']; ?>,'<?php echo $row['name']; ?>',<?php echo $row['state']; ?>)" style="background-color:#76ABAE;">
+                                            onclick="editEntry(<?php echo $row['id']; ?>,'<?php echo $row['name']; ?>',<?php echo $row['state']; ?>)"
+                                            style="background-color:#76ABAE;">
                                             Edit
                                         </button>
                                         <!--Modal for editing entries-->
@@ -149,7 +133,7 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <form id="editForm" role="form">
-                                                        <div class="form-group">
+                                                            <div class="form-group">
                                                                 <label for="editId">Entry ID</label>
                                                                 <input type="text" class="form-control" id="editId" disabled>
                                                             </div>
@@ -233,10 +217,7 @@
                 data: { operation: 'delete', id: id },
 
                 success: function (response) {
-                    // Refresh the page or update the UI as needed
                     console.log("AJAX success:", response);
-                    // Optionally, you can update the UI without refreshing the page
-                    // For example, change the button color based on the updated state
                     location.reload();
                 },
                 error: function (xhr, status, error) {
@@ -244,8 +225,6 @@
                 }
             });
             console.log("Sending AJAX request with data:", { operation: 'delete', id: id });
-
-
         }
 
         function changeState(id, name, currentState) {
@@ -258,10 +237,7 @@
                 data: { operation: 'update', id: id, name: name, state: newState },
 
                 success: function (response) {
-                    // Refresh the page or update the UI as needed
                     console.log("AJAX success:", response);
-                    // Optionally, you can update the UI without refreshing the page
-                    // For example, change the button color based on the updated state
                     var button = $('#button_' + id);
                     button.removeClass('btn-danger btn-success');
                     button.addClass(newState === 0 ? 'btn-danger' : 'btn-success');
@@ -301,7 +277,6 @@
                 }
             });
         }
-
 
     </script>
 </body>
